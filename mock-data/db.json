@@ -1,4 +1,16 @@
 {
+  "users": [
+    {
+      "email": "abc@def.com",
+      "password": "$2a$10$3Om9zb8aHAIF7BHIeFPRH.1w8lSNK7Z/TamklFpMqPKVTJ5LptczC",
+      "id": 1
+    },
+    {
+      "email": "abc1@def.com",
+      "password": "$2a$10$6jP2OMwFikRUzgg9fwFokugzBFuqYIhikPVE7eTFCudddeJsBqYV2",
+      "id": 2
+    }
+  ],
   "incidents": [
     {
       "title": "Water leakage on main road",

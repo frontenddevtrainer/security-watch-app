@@ -7,10 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "dev:api": "json-server ./mock-data/db.json --port 4800 --delay 3000"
+    "dev:api": "json-server ./mock-data/db.json --port 4800 --delay 3000 -m ./node_modules/json-server-auth"
   },
   "dependencies": {
-    "json-server": "^0.17.4",
     "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18"
@@ -22,6 +21,8 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
