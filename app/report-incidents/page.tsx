@@ -5,19 +5,26 @@ export default function ReportIncidentsPage() {
 
     const [incident, setIncident] = useState({
         title: "",
-        description: ""
+        description: "",
+        image: ""
     })
 
     const [isProcessing, setIsProcessing] = useState(false);
 
     function handleChange(e: any) {
-        setIncident({ ...incident, [e.target.name]: e.target.value })
+        if (e.target.name === "image") {
+            setIncident({ ...incident, image: e.target.files[0] })
+        }
+        else {
+            setIncident({ ...incident, [e.target.name]: e.target.value })
+        }
     }
 
     function cleanUpForm() {
         setIncident({
             title: "",
-            description: ""
+            description: "",
+            image: ""
         })
     }
 
@@ -53,6 +60,10 @@ export default function ReportIncidentsPage() {
             <div>
                 <label className="block">Description</label>
                 <textarea className="w-full p-2 border rounded" id="description" name="description" value={incident.description} onChange={handleChange}></textarea>
+            </div>
+            <div>
+                <label className="block">Image</label>
+                <input className="w-full p-2 border rounded" type="file" id="image" name="image" onChange={handleChange} />
             </div>
             <button disabled={isProcessing} type="submit" className={`text-white px-4 py-2 rounded ${isProcessing ? 'bg-gray-800' : 'bg-blue-500 hover:bg-blue-600'}`}>Submit Incident</button>
         </form>
