@@ -1,21 +1,22 @@
-// 
-'use client'
-import { useEffect, useState } from "react"
 
-export default function Weather() {
+export default async function Weather() {
 
-    const [weatherData, setWeatherData] = useState(null);
-
-    useEffect(() => {
-        async function getData() {
-            // Geolocation HTML 5 > Lat Long
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=28.7041&lon=77.1025&appid=ffcc0c01dbce6d24d20e74777b186300`);
-            const data = await response.json();
-            setWeatherData(data);
+    const OPENWEATHER_API_KEY = process.env['OPENWEATHER_API_KEY']
+    try {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=28.7041&lon=77.1025&appid=${OPENWEATHER_API_KEY}`, { next: { revalidate: 300 } });
+        const data = await response.json();
+        console.log(data);
+        if (data.cod === 401) {
+            return <div>-- C</div>
         }
-        getData();
-    }, [])
+        else {
+            return <div className="text-white">34</div>
+        }
 
-    return <div className="text-white">34</div>
+    } catch (error) {
+        console.log("Error")
+    }
+
+
 
 }
